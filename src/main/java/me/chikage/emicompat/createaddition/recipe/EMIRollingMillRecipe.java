@@ -1,5 +1,5 @@
 package me.chikage.emicompat.createaddition.recipe;
-
+/*
 import com.mrh0.createaddition.index.CABlocks;
 import com.mrh0.createaddition.recipe.rolling.RollingRecipe;
 import com.simibubi.create.compat.emi.CreateEmiAnimations;
@@ -43,3 +43,5 @@ public class EMIRollingMillRecipe extends CreateEmiRecipe<RollingRecipe> {
         });
     }
 }
+
+ */

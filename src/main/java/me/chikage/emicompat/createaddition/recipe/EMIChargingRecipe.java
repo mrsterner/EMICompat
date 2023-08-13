@@ -1,21 +1,14 @@
 package me.chikage.emicompat.createaddition.recipe;
 
 
-import com.mrh0.createaddition.blocks.tesla_coil.TeslaCoil;
-import com.mrh0.createaddition.index.CABlocks;
-import com.mrh0.createaddition.recipe.charging.ChargingRecipe;
-import com.simibubi.create.compat.emi.CreateEmiAnimations;
-import com.simibubi.create.compat.emi.recipes.CreateEmiRecipe;
-import com.simibubi.create.foundation.gui.AllGuiTextures;
 import dev.emi.emi.api.stack.EmiIngredient;
 import dev.emi.emi.api.stack.EmiStack;
 import dev.emi.emi.api.widget.WidgetHolder;
-import me.chikage.emicompat.createaddition.CreateAdditionPlugin;
 import net.minecraft.core.Direction;
 
 import java.util.List;
 
-
+/*
 public class EMIChargingRecipe extends CreateEmiRecipe<ChargingRecipe> {
     public EMIChargingRecipe(ChargingRecipe recipe) {
         super(CreateAdditionPlugin.Charging, recipe, 177, 53, c -> {
@@ -46,3 +39,5 @@ public class EMIChargingRecipe extends CreateEmiRecipe<ChargingRecipe> {
         });
     }
 }
+
+ */

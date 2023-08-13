@@ -4,6 +4,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import dev.emi.emi.api.render.EmiRenderable;
 import dev.emi.emi.api.stack.EmiStack;
 import net.minecraft.Util;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.List;
@@ -18,7 +19,7 @@ public class GrowingSeedIconRenderer implements EmiRenderable {
     }
 
     @Override
-    public void render(PoseStack matrices, int x, int y, float delta) {
+    public void render(GuiGraphics draw, int x, int y, float delta) {
         var now = Util.getMillis();
         if (now > nextFrame + 2000) {
             currentStage++;
@@ -29,6 +30,6 @@ public class GrowingSeedIconRenderer implements EmiRenderable {
             currentStage = 0;
         }
 
-        stages.get(currentStage).render(matrices, x, y, delta);
+        stages.get(currentStage).render(draw, x, y, delta);
     }
 }

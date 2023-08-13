@@ -4,20 +4,18 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.BufferBuilder;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.Tesselator;
-import com.mojang.math.Quaternion;
-import com.mojang.math.Vector3f;
+import com.mojang.math.Axis;
 import dev.emi.emi.api.widget.Bounds;
 import dev.emi.emi.api.widget.Widget;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.renderer.FogRenderer;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.data.BuiltinRegistries;
 import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.ColorResolver;
 import net.minecraft.world.level.LightLayer;
-import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -25,6 +23,7 @@ import net.minecraft.world.level.lighting.LevelLightEngine;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import org.jetbrains.annotations.Nullable;
+import org.joml.Quaternionf;
 
 public class WaterBlockRenderer extends Widget {
 
@@ -45,7 +44,7 @@ public class WaterBlockRenderer extends Widget {
     }
 
     @Override
-    public void render(PoseStack matrices, int mouseX, int mouseY, float delta) {
+    public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float delta) {
         var blockRenderer = Minecraft.getInstance().getBlockRenderer();
 
         var renderType = ItemBlockRenderTypes.getRenderLayer(waterBlock.getFluidState());
@@ -90,12 +89,12 @@ public class WaterBlockRenderer extends Widget {
         float rotation = 45;
 
         worldMatStack.scale(1, 1, -1);
-        worldMatStack.mulPose(Vector3f.YP.rotationDegrees(-180));
+        worldMatStack.mulPose(Axis.YP.rotationDegrees(-180));
 
-        Quaternion flip = Vector3f.ZP.rotationDegrees(180);
-        flip.mul(Vector3f.XP.rotationDegrees(angle));
+        Quaternionf flip = Axis.ZP.rotationDegrees(180);
+        flip.mul(Axis.XP.rotationDegrees(angle));
 
-        Quaternion rotate = Vector3f.YP.rotationDegrees(rotation);
+        Quaternionf rotate = Axis.YP.rotationDegrees(rotation);
         worldMatStack.mulPose(flip);
         worldMatStack.mulPose(rotate);
 
@@ -128,7 +127,7 @@ public class WaterBlockRenderer extends Widget {
 
         @Override
         public int getBlockTint(BlockPos blockPos, ColorResolver colorResolver) {
-            return colorResolver.getColor(BuiltinRegistries.BIOME.getOrThrow(Biomes.THE_VOID), 0, 0);
+            return colorResolver.getColor(Minecraft.getInstance().level.getBiome(blockPos).value(), 0, 0);
         }
 
         @Nullable

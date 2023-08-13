@@ -1,5 +1,6 @@
 package me.chikage.emicompat.farmersdelight.recipe;
 
+import appeng.util.Platform;
 import com.nhoryzon.mc.farmersdelight.FarmersDelightMod;
 import com.nhoryzon.mc.farmersdelight.recipe.CookingPotRecipe;
 import dev.emi.emi.EmiPort;
@@ -63,7 +64,7 @@ public class EmiCookingPotRecipe implements EmiRecipe {
                     stack.setRemainder(EmiStack.of(remainder));
             }
         }
-        this.output = List.of(EmiStack.of(recipe.getResultItem()));
+        this.output = List.of(EmiStack.of(recipe.getResultItem(Platform.getClientRegistryAccess())));
     }
 
     @Override

@@ -15,6 +15,7 @@ import net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Block;
@@ -72,7 +73,7 @@ public class EmiDecompositionRecipe implements EmiRecipe {
         gui.addSlot(output.get(0), 84, 16)
                 .drawBack(false);
 
-        gui.addSlot(EmiIngredient.of(Registry.BLOCK.getTag(TagsRegistry.COMPOST_ACTIVATORS).stream().flatMap(HolderSet::stream).map(Holder::value).map(v->EmiStack.of(v.asItem())).collect(Collectors.toList())) , 55, 44)
+        gui.addSlot(EmiIngredient.of(BuiltInRegistries.BLOCK.getTag(TagsRegistry.COMPOST_ACTIVATORS).stream().flatMap(HolderSet::stream).map(Holder::value).map(v->EmiStack.of(v.asItem())).collect(Collectors.toList())) , 55, 44)
                 .customBackground(GUI_TEXTURE, 119, 0, 18, 18)
                 .catalyst(true);
 
